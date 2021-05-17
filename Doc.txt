@@ -1,0 +1,111 @@
+	##########################################################################
+- Cria uma imagem do postgresql
+
+* passa como parametro o nome da imagem {NI}, a porta de comunicação {PC}, o nome do banco {NB}, o usuário {US} e senha do banco {SE}
+
+docker run --name NI -d -p PC:PC -e POSTGRES_USER=NB -e POSTGRES_PASSWORD=US -e POSTGRES_DB=SE
+
+docker run --name cities-db -d -p 5432:5432 -e POSTGRES_USER=postgres_user_city -e POSTGRES_PASSWORD=super_password -e POSTGRES_DB=cities postgres
+
+obs.:
+
+* Para mudar a porta para 5434 devido conflito com postgre local
+docker run --name cities-db -d -p 5434:5432 -e POSTGRES_USER=postgres_user_city -e POSTGRES_PASSWORD=super_password -e POSTGRES_DB=cities postgres
+
+
+##########################################################################
+- Configura o arquivo application.properties com os dados do banco
+
+spring.datasource.url=jdbc:postgresql://localhost:5432/cities
+spring.datasource.username=postgres_user_city
+spring.datasource.password=super_password
+
+
+##########################################################################
+- Clonar do git o prjeto com os dados
+
+git clone https://github.com/chinnonsantos/sql-paises-estados-cidades.git
+
+
+##########################################################################
+- Popular o banco
+
+1 - Cria um bash no docker para usar o psql	
+
+docker run -it --rm --net=host -v %cd%:/tmp postgres /bin/bash
+
+obs.:
+No windows substitui o $PWD por %cd%
+
+docker run -it --rm --net=host -v %cd%:/tmp postgres /bin/bash
+
+2 - Povoar a tabela pais
+
+psql -h localhost -p 5434 -U postgres_user_city cities -f /tmp/pais.sql
+
+3 - Povoar a tabela pais
+
+psql -h localhost -p 5434 -U postgres_user_city cities -f /tmp/estado.sql
+
+4 - Povoar a tabela pais
+
+psql -h localhost -p 5434 -U postgres_user_city cities -f /tmp/cidade.sql
+
+
+5- Conferir a criação das tabelas
+
+Conectar ao banco
+psql -h localhost -p 5434 -U postgres_user_city cities
+
+Verificar tabelas
+\d nomeDaTabela;
+
+select * from tabela;
+
+
+##########################################################################
+
+Ativar extenções para calculo de distâncias no postgresql
+
+
+- Teste de distância entre duas cidades
+
+Obs.:
+	O retorno é em metros
+
+CREATE EXTENSION cube;
+
+select earth_distance(
+    ll_to_earth(-21.95840072631836,-47.98820114135742), 
+    ll_to_earth(-22.01740074157715,-47.88600158691406)
+) as distance;
+------------------------------------------------------
+- Teste de distância entre duas cidades
+
+Obs.:
+	O retorno é em milhas
+
+CREATE EXTENSION earthdistance;
+
+select ((select lat_lon from cidade where id = 4929) <@> (select lat_lon from cidade where id=5254)) as distance;
+
+
+
+
+
+
+##########################################################################
+Requisições testes
+
+http://localhost:8080/countries?page=0&size=5&sort=name,asc
+
+http://localhost:8080/countries/1
+
+http://localhost:8080/states/12
+
+
+Distância em milhas
+http://localhost:8080/distances/by-points?from=4929&to=5254
+
+Distância em metros
+http://localhost:8080/distances/by-cube?from=4929&to=5254
