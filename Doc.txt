@@ -158,3 +158,29 @@ psql -h ec2-54-152-185-191.compute-1.amazonaws.com -U ccqsibrgghjvol d6v0p0hpfr3
 
 CREATE EXTENSION cube;
 CREATE EXTENSION earthdistance;
+
+6 - Cria o arquivo application-producao.properties
+
+substitui as configurações locais por
+
+spring.datasource.url=${DATABASE_URL}
+server.port=${PORT:8080}
+
+7 - Cria o arquivo Procfile
+
+insere o comando
+web: java -jar -Dspring.profiles.active=heroku build/libs/cities-of-Brasil-api-0.0.1-SNAPSHOT.jar
+
+8 - Atualiza o github e heroku
+
+git add .
+
+git commit -m "initial commit"
+
+git push -u origin master 
+git push heroku master
+
+9 - Verifica o log do heroku
+
+heroku logs --tail
+
