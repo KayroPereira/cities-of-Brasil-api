@@ -109,3 +109,52 @@ http://localhost:8080/distances/by-points?from=4929&to=5254
 
 Distância em metros
 http://localhost:8080/distances/by-cube?from=4929&to=5254
+
+
+
+##########################################################################
+Subir para Heroku
+
+- Adicionar o projeto ao git
+
+1 - Na pasta do projeto
+git init
+git add .
+git commit -m "initial commit"
+
+git remote add origin https://github.com/KayroPereira/cities-of-Brasil-api.git
+git push -u origin master 
+
+
+git push heroku master
+
+2 - Cria o banco no postgresql
+heroku addons:create heroku-postgresql
+
+
+3 - Populando o banco
+
+Repete os passos iniciais com os dados fornecidos pelo heroku
+
+docker run -it --rm --net=host -v %cd%:/tmp postgres /bin/bash	-> dentro da pasta onde estão os dados
+
+psql -h Host -p 5434 -U User Database -f /tmp/pais.sql		-> Variáveis do Heroky
+
+psql -h ec2-54-152-185-191.compute-1.amazonaws.com -U ccqsibrgghjvol d6v0p0hpfr38ea -f /tmp/pais.sql
+
+insere a senha fornecida pelo heroku
+
+senha -> 07b1de97a44f2a9949ab69754d85ad4ce2b18591708b59739b9d86e1894b8a5f
+
+psql -h ec2-54-152-185-191.compute-1.amazonaws.com -U ccqsibrgghjvol d6v0p0hpfr38ea -f /tmp/estado.sql
+psql -h ec2-54-152-185-191.compute-1.amazonaws.com -U ccqsibrgghjvol d6v0p0hpfr38ea -f /tmp/cidade.sql
+
+
+4 - Verificar os dados no banco
+
+psql -h ec2-54-152-185-191.compute-1.amazonaws.com -U ccqsibrgghjvol d6v0p0hpfr38ea
+
+5 - Ativa os plugs
+
+CREATE EXTENSION cube;
+CREATE EXTENSION earthdistance;
