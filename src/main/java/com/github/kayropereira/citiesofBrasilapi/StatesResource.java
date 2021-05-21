@@ -25,10 +25,22 @@ public class StatesResource {
         return repository.findAll(page);
     }
 
-    @GetMapping("/{id}")
+    @GetMapping(path = "/{id}")
     public ResponseEntity getOne(@PathVariable Long id){
 
         Optional<State> optional = repository.findById(id);
+
+        if(optional.isPresent()) {
+            return ResponseEntity.ok(optional.get());
+        }else{
+            return ResponseEntity.notFound().build();
+        }
+    }
+
+    @GetMapping(path = "name/{state}")
+    public ResponseEntity getPorNome(@PathVariable("state") String name){
+
+        Optional<State> optional = repository.findByName(name);
 
         if(optional.isPresent()) {
             return ResponseEntity.ok(optional.get());

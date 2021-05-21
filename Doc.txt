@@ -110,6 +110,11 @@ http://localhost:8080/distances/by-points?from=4929&to=5254
 Distância em metros
 http://localhost:8080/distances/by-cube?from=4929&to=5254
 
+Recife - 3315
+Jaboatão - 3270
+Moreno - 3292
+
+https://cities-of-brasil-api.herokuapp.com/distances/by-cube?from=3315&to=3270
 
 
 ##########################################################################
@@ -169,7 +174,9 @@ server.port=${PORT:8080}
 7 - Cria o arquivo Procfile
 
 insere o comando
-web: java -jar -Dspring.profiles.active=heroku build/libs/cities-of-Brasil-api-0.0.1-SNAPSHOT.jar
+web: java -jar -Dspring.profiles.active=nome da alteracao do arquivo build/libs/cities-of-Brasil-api-0.0.1-SNAPSHOT.jar
+
+web: java -jar -Dspring.profiles.active=producao build/libs/cities-of-Brasil-api-0.0.1-SNAPSHOT.jar
 
 8 - Atualiza o github e heroku
 
