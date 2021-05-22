@@ -1,5 +1,7 @@
 
-const urlPage = "http://localhost:8080";
+//const urlPage = "http://localhost:8080";
+
+const urlPage = "https://cities-of-brasil-api.herokuapp.com";
 
 function getUrl(url){
     let request = new XMLHttpRequest();
