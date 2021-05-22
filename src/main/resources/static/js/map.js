@@ -16,14 +16,21 @@ function pointStart(){
     mapa.setCenter({lat: -13.997872, lng: -49.126678});
 }
 
-function addMarker(latitude, longitude, component, title){
+function addMarker(latitude, longitude, component, titleLoc){
 
     let marker = new google.maps.Marker({
         position: new google.maps.LatLng(latitude, longitude),
+        draggable: false,
+
+        label: {
+            color: 'blue',
+            fontWeight: 'bold',
+            text: titleLoc,
+            labelAnchor: new google.maps.Point(30, -2),
+          },
         map: mapa,
-        draggable: true,
+
         animation: google.maps.Animation.DROP,
-        title: title
     });
     markers[component] = marker;
     markers[component].setMap(mapa);

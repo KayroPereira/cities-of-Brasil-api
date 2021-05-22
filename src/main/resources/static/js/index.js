@@ -93,7 +93,7 @@ cidadeFrom.onchange = function(){
 
     let cidadeSelectedData = getCidadePorId(cidadeSelected);
 
-    addMarcador(cidadeSelectedData.location.x, cidadeSelectedData.location.y, CIDADE_FROM, cidadeSelected.text);
+    addMarcador(cidadeSelectedData.location.x, cidadeSelectedData.location.y, CIDADE_FROM, cidadeFrom[cidadeFrom.selectedIndex].text);
 }
 
 cidadeTo.onchange = function(){
@@ -112,7 +112,7 @@ cidadeTo.onchange = function(){
 
     let cidadeSelectedData = getCidadePorId(cidadeSelected);
 
-    addMarcador(cidadeSelectedData.location.x, cidadeSelectedData.location.y, CIDADE_TO, cidadeSelected.text);
+    addMarcador(cidadeSelectedData.location.x, cidadeSelectedData.location.y, CIDADE_TO, cidadeTo[cidadeTo.selectedIndex].text);
 }
 
 calcularDistancia.addEventListener("click", function(){
