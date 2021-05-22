@@ -1,5 +1,7 @@
-package com.github.kayropereira.citiesofBrasilapi;
+package com.github.kayropereira.citiesofBrasilapi.countries.resource;
 
+import com.github.kayropereira.citiesofBrasilapi.countries.entities.Country;
+import com.github.kayropereira.citiesofBrasilapi.countries.repository.CountryRepository;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.http.ResponseEntity;
@@ -8,8 +10,6 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import javax.websocket.server.PathParam;
-import java.util.List;
 import java.util.Optional;
 
 @RestController

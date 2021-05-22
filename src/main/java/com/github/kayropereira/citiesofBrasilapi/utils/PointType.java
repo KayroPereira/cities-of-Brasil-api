@@ -1,4 +1,4 @@
-package com.github.kayropereira.citiesofBrasilapi;
+package com.github.kayropereira.citiesofBrasilapi.utils;
 
 import java.io.Serializable;
         import java.sql.PreparedStatement;

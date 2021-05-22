@@ -1,7 +1,7 @@
-package com.github.kayropereira.citiesofBrasilapi.distances;
+package com.github.kayropereira.citiesofBrasilapi.cities.resouce;
 
-import com.github.kayropereira.citiesofBrasilapi.EarthRadius;
-import org.apache.coyote.Response;
+import com.github.kayropereira.citiesofBrasilapi.utils.EarthRadius;
+import com.github.kayropereira.citiesofBrasilapi.cities.services.DistanceService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.http.ResponseEntity;

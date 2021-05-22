@@ -1,5 +1,7 @@
-package com.github.kayropereira.citiesofBrasilapi;
+package com.github.kayropereira.citiesofBrasilapi.states.resource;
 
+import com.github.kayropereira.citiesofBrasilapi.states.entities.State;
+import com.github.kayropereira.citiesofBrasilapi.states.repository.StatesRepository;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.http.ResponseEntity;

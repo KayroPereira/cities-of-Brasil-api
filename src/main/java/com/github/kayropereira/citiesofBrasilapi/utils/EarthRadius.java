@@ -1,4 +1,4 @@
-package com.github.kayropereira.citiesofBrasilapi;
+package com.github.kayropereira.citiesofBrasilapi.utils;
 
 public enum EarthRadius {
     METERS("m", 6378168),

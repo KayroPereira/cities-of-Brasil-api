@@ -1,4 +1,4 @@
-package com.github.kayropereira.citiesofBrasilapi;
+package com.github.kayropereira.citiesofBrasilapi.countries.entities;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;

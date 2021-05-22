@@ -1,11 +1,12 @@
-package com.github.kayropereira.citiesofBrasilapi;
+package com.github.kayropereira.citiesofBrasilapi.cities.resouce;
 
+import com.github.kayropereira.citiesofBrasilapi.cities.entities.City;
+import com.github.kayropereira.citiesofBrasilapi.cities.repository.CityRepository;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import javax.persistence.Column;
 import java.util.List;
 import java.util.Optional;
 

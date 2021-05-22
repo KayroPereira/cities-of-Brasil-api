@@ -1,4 +1,4 @@
-package com.github.kayropereira.citiesofBrasilapi.distances;
+package com.github.kayropereira.citiesofBrasilapi.cities.services;
 
 import static java.lang.Math.atan2;
 import static java.lang.Math.cos;
@@ -8,10 +8,10 @@ import static java.lang.Math.toRadians;
 import java.util.Arrays;
 import java.util.List;
 
-import com.github.kayropereira.citiesofBrasilapi.City;
-import com.github.kayropereira.citiesofBrasilapi.CityRepository;
-import com.github.kayropereira.citiesofBrasilapi.EarthRadius;
-import com.github.kayropereira.citiesofBrasilapi.StringLocationUtils;
+import com.github.kayropereira.citiesofBrasilapi.cities.entities.City;
+import com.github.kayropereira.citiesofBrasilapi.cities.repository.CityRepository;
+import com.github.kayropereira.citiesofBrasilapi.utils.EarthRadius;
+import com.github.kayropereira.citiesofBrasilapi.utils.StringLocationUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.data.geo.Point;

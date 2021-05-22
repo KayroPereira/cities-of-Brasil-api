@@ -8,7 +8,7 @@
         <title>Cidades do Brasil</title>
 
         <link rel="stylesheet" href="/css/reset.css">
-        <link rel="stylesheet" href="/css/style.css">
+        <link rel="stylesheet" href="/css/index.css">
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-eOJMYsd53ii+scO/bJGFsiCZc+5NDVN2yr8+0RDqr0Ql0h+rP48ckxlpbzKgwra6" crossorigin="anonymous">
     </head>
 
@@ -22,10 +22,10 @@
             </div>
         </header>
 
-        <main style="padding-bottom: 20px;">
+        <main>
             <div class="row align-items-center">
                 <div class="col" style=' display: inline-block;'>
-                    <fieldset class="row gy-2 gx-3 align-items-center" style='padding-left:20px; left: 50%;'>
+                    <fieldset class="row gy-2 gx-3 align-items-center fieldsetSelection">
                         <label class="col-sm-2 col-form-label col-form-label-lg">Estado</label>
                         <div class="col-12">
                             <select id="estadoSelect" class="form-select">
@@ -40,39 +40,34 @@
 
                         <div class="col-12">
                             <label id = 'labelCidadeTo' class="col-sm-20 col-form-label col-form-label-lg" style='display:none'>Cidade Destino</label>
-                            <select id='cidadeToSelect' class="form-select" style='display:none' style='display:none'></select>
+                            <select id='cidadeToSelect' class="form-select" style='display:none'></select>
                         </div>
                     </fieldset>
                 </div>
 
-                <div class="col" style="align-items: center; padding-right: 20px;">
+                <div id="div-return" class="col">
                     <div id='retornoDistanciaDiv' style="display:none">
-                        <div id= "respostaMetrosAlert" class="alert alert-success" role="alert" style="display: block; margin-top: 0px; ">
-                            A simple success alert—check it out!
-                        </div>
+                        <div id= "respostaMetrosAlert" class="alert alert-success alert-return" role="alert"></div>
 
-                        <div id= "respostaMilhasAlert"  class="alert alert-primary" role="alert" style="display: block; margin-top: 0px; ">
-                            A simple success alert—check it out!
-                        </div>
+                        <div id= "respostaMilhasAlert"  class="alert alert-primary alert-return" role="alert"></div>
                     </div>
                 </div>
             </div>
 
-            <button id="calcularButton" type="button" class="btn btn-success" style="margin-left:20px; margin-top: 15px; display:none">Calcular Distância</button>
+            <button id="calcularButton" type="button" class="btn btn-success btn-calcular" style="display:none">Calcular Distância</button>
 
-            <div id="mapa" style="height:400px; width:auto; margin-top: 20px;">
-
-            </div>
+            <div id="mapa" class="div-mapa"></div>
         </main>
-    <footer>
-        <img src="/images/mundi.png" width="90px" height="90px" alt="Logo Mundo">
-        <p class="copyright">&copy; Copyright Cidades do Brasil - 2021</p>
-    </footer>
-    </body>
 
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/js/bootstrap.bundle.min.js" integrity="sha384-JEW9xMcG8R+pH31jmWH6WWP0WintQrMb4s7ZOdauHnUtxwoG2vI5DkLtS3qm9Ekf" crossorigin="anonymous"></script>
-    <script language="javascript" src="/js/apiDistanciaCidades.js"></script>
-    <script language="javascript" src="/js/index.js"></script>
-    <script language="javascript" src="/js/map.js"></script>
-    <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDfPQs3FUGjEjtnsR-v-fel2gck4C-jIyA&callback=inicializar"></script>
+        <footer>
+            <img src="/images/mundi.png" width="90px" height="90px" alt="Logo Mundo">
+            <p class="copyright">&copy; Copyright Cidades do Brasil - 2021</p>
+        </footer>
+
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/js/bootstrap.bundle.min.js" integrity="sha384-JEW9xMcG8R+pH31jmWH6WWP0WintQrMb4s7ZOdauHnUtxwoG2vI5DkLtS3qm9Ekf" crossorigin="anonymous"></script>
+        <script language="javascript" src="/js/apiDistanciaCidades.js"></script>
+        <script language="javascript" src="/js/index.js"></script>
+        <script language="javascript" src="/js/map.js"></script>
+        <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDfPQs3FUGjEjtnsR-v-fel2gck4C-jIyA&callback=inicializar"></script>
+    </body>
 </html>

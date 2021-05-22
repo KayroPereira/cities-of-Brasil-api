@@ -1,5 +1,6 @@
-package com.github.kayropereira.citiesofBrasilapi;
+package com.github.kayropereira.citiesofBrasilapi.cities.entities;
 
+import com.github.kayropereira.citiesofBrasilapi.utils.PointType;
 import org.hibernate.annotations.Type;
 import org.hibernate.annotations.TypeDef;
 import org.hibernate.annotations.TypeDefs;

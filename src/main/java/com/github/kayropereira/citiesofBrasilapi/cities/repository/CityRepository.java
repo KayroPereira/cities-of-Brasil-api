@@ -1,5 +1,6 @@
-package com.github.kayropereira.citiesofBrasilapi;
+package com.github.kayropereira.citiesofBrasilapi.cities.repository;
 
+import com.github.kayropereira.citiesofBrasilapi.cities.entities.City;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 
