@@ -54,14 +54,4 @@ public class CityResource {
             return ResponseEntity.notFound().build();
         }
     }
-//    @GetMapping("name/{city}")
-//    public ResponseEntity getCityName(@PathVariable("city") String name){
-//        Optional<City> optional = repository.findByName(name);
-//
-//        if(optional.isPresent()){
-//            return ResponseEntity.ok().body(optional.get());
-//        }else{
-//            return ResponseEntity.notFound().build();
-//        }
-//    }
 }

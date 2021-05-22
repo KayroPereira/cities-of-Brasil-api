@@ -38,13 +38,4 @@ public class CountryResource {
             return ResponseEntity.notFound().build();
         }
     }
-
-//    @GetMapping("/{id}")
-//    public Country getOne(@PathVariable Long id){
-//        Optional<Country> optional = repository.findById(id);
-//        return optional.get();
-//    }
-//    public List<Country> countries(){
-//        return repository.findAll();
-//    }
 }

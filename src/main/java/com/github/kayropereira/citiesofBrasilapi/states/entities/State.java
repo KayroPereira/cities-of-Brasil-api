@@ -16,20 +16,6 @@ import java.util.List;
         @TypeDef(name = "jsonb", typeClass = JsonBinaryType.class)
 })
 public class State {
-/*
-                                  Table "public.estado"
- Column |         Type          | Collation | Nullable |              Default
---------+-----------------------+-----------+----------+------------------------------------
- id     | bigint                |           | not null | nextval('estado_id_seq'::regclass)
- nome   | character varying(60) |           |          |
- uf     | character varying(2)  |           |          |
- ibge   | integer               |           |          |
- pais   | integer               |           |          |
- ddd    | json                  |           |          |
-Indexes:
-    "estado_pkey" PRIMARY KEY, btree (id)
- */
-
     @Id
     private Long id;
 
@@ -39,9 +25,6 @@ Indexes:
     private String uf;
 
     private Integer ibge;
-
-//    @Column(name = "pais")
-//    private Integer countryId;
 
     @ManyToOne
     @JoinColumn(name = "pais", referencedColumnName = "id")
@@ -70,10 +53,6 @@ Indexes:
     public Integer getIbge() {
         return ibge;
     }
-
-//    public Integer getCountryId() {
-//        return countryId;
-//    }
 
     public Country getCountry() {
         return country;
