@@ -51,7 +51,13 @@ function centerMap(coordenadas){
     }
     mapa.fitBounds(bounds);
 
-    if(coordenadaNull){
+    if(coordenadas[0] === coordenadas[1]){
+        console.log("igual");
+    }else{
+        console.log("diferente");
+    }
+
+    if(coordenadaNull | ((coordenadas[0].lat === coordenadas[1].lat) & (coordenadas[0].lng === coordenadas[1].lng))){
         mapa.setZoom(10);
     }
 }
