@@ -1,3 +1,5 @@
+const CIDADE_FROM = 0;
+const CIDADE_TO = 1;
 
 let estado = document.getElementById("estadoSelect");
 let cidadeFrom = document.getElementById("cidadeFromSelect");
@@ -6,6 +8,9 @@ let cidadeTo = document.getElementById("cidadeToSelect");
 let retornoDistancia = document.getElementById("retornoDistanciaDiv");
 
 let calcularDistancia = document.querySelector("#calcularButton");
+
+let coordenadas = [null, null];
+let cidadesSelecionadas = 0;
 
 function updateSelect(selectCompoment, dados, textItens){
 
@@ -31,6 +36,12 @@ function updateSelect(selectCompoment, dados, textItens){
     });
 }
 
+function addMarcador(latitude, longitude, component, title){
+    coordenadas[component] = {lat:latitude, lng:longitude};
+    addMarker(latitude, longitude, component, title);
+    centerMap(coordenadas);
+}
+
 function controleBotao(status){
     status ? calcularDistancia.style.display="block": calcularDistancia.style.display="none";
 }
@@ -39,34 +50,18 @@ function controleResposta(status){
     status ? retornoDistancia.style.display="block": retornoDistancia.style.display="none";
 }
 
-cidadeFrom.onchange = function(){
-    controleResposta(false);
-
-    let cidadeSelected = this.value;
-
-    if(++cidadesSelecionadas >= 2){
-        controleBotao(true);
-    }
-}
-
-cidadeTo.onchange = function(){
-    controleResposta(false);
-
-    let cidadeSelected = this.value;
-
-    if(++cidadesSelecionadas >= 2){
-        controleBotao(true);
-    }
-}
-
-let estadoSelected = -1;
-let cidadesSelecionadas = 0;
-
-estado.onchange = function(){
+function clearAllData(){
+    cidadesSelecionadas = 0;
     controleBotao(false);
     controleResposta(false);
+    coordenadas[0] = null;
+    coordenadas[1] = null;
+    clearMarkers();
+    pointStart();
+}
 
-    cidadesSelecionadas = 0;
+estado.onchange = function(){
+    clearAllData();
 
     let estado = this.value;
 
@@ -80,6 +75,44 @@ estado.onchange = function(){
 
     labelCidadeTo.style.display="inline-flex";
     updateSelect(cidadeToSelect, cidades, " a cidade");
+}
+
+cidadeFrom.onchange = function(){
+    controleResposta(false);
+
+    let cidadeSelected = this.value;
+
+    if(++cidadesSelecionadas >= 2){
+        controleBotao(true);
+    }
+
+    if(markers[CIDADE_FROM] != null){
+        markers[CIDADE_FROM].setMap(null);
+        coordenadas[CIDADE_FROM] = null;
+    }
+
+    let cidadeSelectedData = getCidadePorId(cidadeSelected);
+
+    addMarcador(cidadeSelectedData.location.x, cidadeSelectedData.location.y, CIDADE_FROM, cidadeSelected.text);
+}
+
+cidadeTo.onchange = function(){
+    controleResposta(false);
+
+    let cidadeSelected = this.value;
+
+    if(++cidadesSelecionadas >= 2){
+        controleBotao(true);
+    }
+
+    if(markers[CIDADE_TO] != null){
+        markers[CIDADE_TO].setMap(null);
+        coordenadas[CIDADE_TO] = null;
+    }
+
+    let cidadeSelectedData = getCidadePorId(cidadeSelected);
+
+    addMarcador(cidadeSelectedData.location.x, cidadeSelectedData.location.y, CIDADE_TO, cidadeSelected.text);
 }
 
 calcularDistancia.addEventListener("click", function(){

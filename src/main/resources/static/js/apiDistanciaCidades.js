@@ -23,10 +23,15 @@ function getCidades(estadoUF){
     return JSON.parse(data);
 }
 
-function getCidadePorNome(cidadeNome, estadoId){
-    let data = getUrl(urlPage+"/cities/filter?city="+cidadeNome+"&uf="+estadoId);
+function getCidadePorId(cidadeId){
+    let data = getUrl(urlPage+"/cities/"+cidadeId);
     return JSON.parse(data);
 }
+
+//function getCidadePorNome(cidadeNome, estadoId){
+//    let data = getUrl(urlPage+"/cities/filter?city="+cidadeNome+"&uf="+estadoId);
+//    return JSON.parse(data);
+//}
 
 function getCalculoDistanciaMetros(cidadeFrom, cidadeTo){
     let data = getUrl(urlPage+"/distances/by-cube?from="+cidadeFrom+"&to="+cidadeTo);

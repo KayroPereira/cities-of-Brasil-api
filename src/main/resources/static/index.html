@@ -1,73 +1,78 @@
 <!DOCTYPE html>
 <html lang="pt_br">
 
-<head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width">
 
-    <title>Cidades do Brasil</title>
+        <title>Cidades do Brasil</title>
 
-    <link rel="stylesheet" href="/css/reset.css">
-    <link rel="stylesheet" href="/css/style.css">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-eOJMYsd53ii+scO/bJGFsiCZc+5NDVN2yr8+0RDqr0Ql0h+rP48ckxlpbzKgwra6" crossorigin="anonymous">
-</head>
+        <link rel="stylesheet" href="/css/reset.css">
+        <link rel="stylesheet" href="/css/style.css">
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-eOJMYsd53ii+scO/bJGFsiCZc+5NDVN2yr8+0RDqr0Ql0h+rP48ckxlpbzKgwra6" crossorigin="anonymous">
+    </head>
 
-<body>
-<header class="text-white">
-    <div class="px-4 pt-5 my-5 text-center border-bottom">
-        <h1 class="display-7 fw-bold">Calcula a distância entre duas cidades brasileiras</h1>
-        <div class="col-lg-6 mx-auto">
-            <p class="lead mb-4">Escolha o estado para buscar as cidades relacionadas <br> Escolha a cidade de origem<br>Escolha a cidade de destino<br>Pronto! Click no botão calcular distância!</p>
-        </div>
-    </div>
-</header>
-
-<main style="padding-bottom: 20px;">
-    <div class="row align-items-center">
-        <div class="col" style=' display: inline-block;'>
-            <fieldset class="row gy-2 gx-3 align-items-center" style='padding-left:20px; left: 50%;'>
-                <label class="col-sm-2 col-form-label col-form-label-lg">Estado</label>
-                <div class="col-12">
-                    <select id="estadoSelect" class="form-select">
-                        <option value='' selected disabled>Selecione o estado</option>
-                    </select>
-                </div>
-
-                <div class="col-12">
-                    <label id = 'labelCidadeFrom' class="col-sm-20 col-form-label col-form-label-lg" style='display:none'>Cidade Origem</label>
-                    <select id='cidadeFromSelect' class="form-select" style='display:none'></select>
-                </div>
-
-                <div class="col-12">
-                    <label id = 'labelCidadeTo' class="col-sm-20 col-form-label col-form-label-lg" style='display:none'>Cidade Destino</label>
-                    <select id='cidadeToSelect' class="form-select" style='display:none' style='display:none'></select>
-                </div>
-            </fieldset>
-        </div>
-
-        <div class="col" style="align-items: center; padding-right: 20px;">
-            <div id='retornoDistanciaDiv' style="display:none">
-                <div id= "respostaMetrosAlert" class="alert alert-success" role="alert" style="display: block; margin-top: 0px; ">
-                    A simple success alert—check it out!
-                </div>
-
-                <div id= "respostaMilhasAlert"  class="alert alert-primary" role="alert" style="display: block; margin-top: 0px; ">
-                    A simple success alert—check it out!
+    <body>
+        <header class="text-white">
+            <div class="px-4 pt-5 my-5 text-center border-bottom">
+                <h1 class="display-7 fw-bold">Calcula a distância entre duas cidades brasileiras</h1>
+                <div class="col-lg-6 mx-auto">
+                    <p class="lead mb-4">Escolha o estado para buscar as cidades relacionadas <br> Escolha a cidade de origem<br>Escolha a cidade de destino<br>Pronto! Click no botão calcular distância!</p>
                 </div>
             </div>
-        </div>
-    </div>
+        </header>
 
-    <button id="calcularButton" type="button" class="btn btn-success" style="margin-left:20px; margin-top: 15px; display:none">Calcular Distância</button>
-</main>
+        <main style="padding-bottom: 20px;">
+            <div class="row align-items-center">
+                <div class="col" style=' display: inline-block;'>
+                    <fieldset class="row gy-2 gx-3 align-items-center" style='padding-left:20px; left: 50%;'>
+                        <label class="col-sm-2 col-form-label col-form-label-lg">Estado</label>
+                        <div class="col-12">
+                            <select id="estadoSelect" class="form-select">
+                                <option value='' selected disabled>Selecione o estado</option>
+                            </select>
+                        </div>
 
-<footer>
-    <img src="/images/mundi.png" width="90px" height="90px" alt="Logo Mundo">
-    <p class="copyright">&copy; Copyright Cidades do Brasil - 2021</p>
-</footer>
-</body>
+                        <div class="col-12">
+                            <label id = 'labelCidadeFrom' class="col-sm-20 col-form-label col-form-label-lg" style='display:none'>Cidade Origem</label>
+                            <select id='cidadeFromSelect' class="form-select" style='display:none'></select>
+                        </div>
 
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/js/bootstrap.bundle.min.js" integrity="sha384-JEW9xMcG8R+pH31jmWH6WWP0WintQrMb4s7ZOdauHnUtxwoG2vI5DkLtS3qm9Ekf" crossorigin="anonymous"></script>
-<script language="javascript" src="/js/apiDistanciaCidades.js"></script>
-<script language="javascript" src="/js/index.js"></script>
+                        <div class="col-12">
+                            <label id = 'labelCidadeTo' class="col-sm-20 col-form-label col-form-label-lg" style='display:none'>Cidade Destino</label>
+                            <select id='cidadeToSelect' class="form-select" style='display:none' style='display:none'></select>
+                        </div>
+                    </fieldset>
+                </div>
+
+                <div class="col" style="align-items: center; padding-right: 20px;">
+                    <div id='retornoDistanciaDiv' style="display:none">
+                        <div id= "respostaMetrosAlert" class="alert alert-success" role="alert" style="display: block; margin-top: 0px; ">
+                            A simple success alert—check it out!
+                        </div>
+
+                        <div id= "respostaMilhasAlert"  class="alert alert-primary" role="alert" style="display: block; margin-top: 0px; ">
+                            A simple success alert—check it out!
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <button id="calcularButton" type="button" class="btn btn-success" style="margin-left:20px; margin-top: 15px; display:none">Calcular Distância</button>
+
+            <div id="mapa" style="height:400px; width:auto; margin-top: 20px;">
+
+            </div>
+        </main>
+    <footer>
+        <img src="/images/mundi.png" width="90px" height="90px" alt="Logo Mundo">
+        <p class="copyright">&copy; Copyright Cidades do Brasil - 2021</p>
+    </footer>
+    </body>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/js/bootstrap.bundle.min.js" integrity="sha384-JEW9xMcG8R+pH31jmWH6WWP0WintQrMb4s7ZOdauHnUtxwoG2vI5DkLtS3qm9Ekf" crossorigin="anonymous"></script>
+    <script language="javascript" src="/js/apiDistanciaCidades.js"></script>
+    <script language="javascript" src="/js/index.js"></script>
+    <script language="javascript" src="/js/map.js"></script>
+    <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDfPQs3FUGjEjtnsR-v-fel2gck4C-jIyA&callback=inicializar"></script>
 </html>
